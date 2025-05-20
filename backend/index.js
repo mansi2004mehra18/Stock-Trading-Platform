@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -129,22 +130,23 @@ app.use(bodyParser.json());
 //       day: "+0.32%",
 //     },
 //   ];
+
 //   tempHoldings.forEach((item) => {
 //     let newHolding = new HoldingsModel({
 //       name: item.name,
 //       qty: item.qty,
 //       avg: item.avg,
 //       price: item.price,
-//       net: item.net,
+//       net: item.day,
 //       day: item.day,
 //     });
 
 //     newHolding.save();
 //   });
-//   res.send("Done");
+//   res.send("Done!");
 // });
 
-// app.get("/addPositions", async (req , res) => {
+// app.get("/addPositions", async (req, res) => {
 //   let tempPositions = [
 //     {
 //       product: "CNC",
@@ -170,6 +172,7 @@ app.use(bodyParser.json());
 
 //   tempPositions.forEach((item) => {
 //     let newPosition = new PositionsModel({
+//       product: item.product,
 //       name: item.name,
 //       qty: item.qty,
 //       avg: item.avg,
@@ -184,7 +187,7 @@ app.use(bodyParser.json());
 //   res.send("Done!");
 // });
 
-app.get("/allHoldings", async (req, res) => { // to fetch data
+app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
 });
@@ -201,12 +204,14 @@ app.post("/newOrder", async (req, res) => {
     price: req.body.price,
     mode: req.body.mode,
   });
+
   newOrder.save();
+
   res.send("Order saved!");
 });
 
 app.listen(PORT, () => {
   console.log("App started!");
   mongoose.connect(uri);
-  console.log("DB connected!");
+  console.log("DB started!");
 });
