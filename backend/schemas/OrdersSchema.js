@@ -1,4 +1,4 @@
- const { Schema } = require("mongoose");
+const { Schema } = require("mongoose");
 
 const OrdersSchema = new Schema({
   name: String,
@@ -8,5 +8,3 @@ const OrdersSchema = new Schema({
 });
 
 module.exports = { OrdersSchema };
-
- 
