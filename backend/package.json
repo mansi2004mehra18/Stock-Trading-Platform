@@ -9,7 +9,9 @@
   "scripts": {
     "start": "nodemon index.js",
     "build": "babel src -d lib",
-    "test": "jest"
+    "test": "jest",
+    "prebuild": "jest"
+    
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
